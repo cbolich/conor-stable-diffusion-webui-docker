@@ -81,6 +81,9 @@ RUN --mount=type=cache,target=/root/.cache/pip  pip install -U opencv-python-hea
 
 COPY . /docker
 
+COPY ./startup.sh /${ROOT}
+RUN bash /${ROOT}/startup.sh
+
 RUN \
   python3 /docker/info.py ${ROOT}/modules/ui.py && \
   mv ${ROOT}/style.css ${ROOT}/user.css && \
