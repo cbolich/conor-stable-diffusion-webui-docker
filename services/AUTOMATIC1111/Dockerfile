@@ -44,7 +44,9 @@ RUN --mount=type=cache,target=/root/.cache/pip \
   cd stable-diffusion-webui && \
   git reset --hard d7aec59c4eb02f723b3d55c6f927a42e97acd679 && \
   pip install -r requirements_versions.txt
-
+#
+RUN pip install transforms3d==0.4.1
+#
 RUN --mount=type=cache,target=/root/.cache/pip  \
   --mount=type=bind,from=xformers,source=/wheel.whl,target=/xformers-0.0.20.dev528-cp310-cp310-manylinux2014_x86_64.whl \
   pip install /xformers-0.0.20.dev528-cp310-cp310-manylinux2014_x86_64.whl
